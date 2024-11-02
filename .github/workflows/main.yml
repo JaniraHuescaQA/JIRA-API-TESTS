@@ -1,12 +1,12 @@
-name: Automated API tests using Postman CLI and Newman
+name: Automated Jira API tests using Postman CLI and Newman
 
 on:
-  push:  # Se ejecuta en cada push
+  push:  # Runs on each push
     branches:
       - main
-  workflow_dispatch: {}  # Para ejecución manual
+  workflow_dispatch: {}  # For manual execution
   schedule:
-    - cron: '0 0 * * 0'  # Se ejecuta todos los domingos a medianoche
+    - cron: '0 0 * * 0'  # Runs every Sunday at midnight
 
 jobs:
   automated-api-tests:
@@ -27,13 +27,13 @@ jobs:
 
       - name: Download Postman collection using Postman API
         run: |
-          curl --location --request GET "https://api.getpostman.com/collections/33801345-5d9e4cce-b45e-4bf9-ad98-d0ee4cc254fb" \
+          curl --location --request GET "https://api.getpostman.com/collections/19013321-2a53e2ee-71fa-4ca2-9220-5fb28a15e726" \
           --header "X-Api-Key: ${{ secrets.POSTMAN_API_KEY }}" \
           --output collection.json
 
       - name: Download Postman environment using Postman API
         run: |
-          curl --location --request GET "https://api.getpostman.com/environments/33801345-b6d6599f-f9a8-418c-91b1-fe6e63a48a95" \
+          curl --location --request GET "https://api.getpostman.com/environments/19013321-6cf28289-281b-4a90-8bb4-c84e04ce4440" \
           --header "X-Api-Key: ${{ secrets.POSTMAN_API_KEY }}" \
           --output environment.json
 
